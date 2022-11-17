@@ -2,6 +2,7 @@ import {Modal, Form, Button} from "react-bootstrap"
 import React from 'react'
 import {useRef} from 'react'
 import { useBudgets } from "../Contexts/BudgetsContext"
+import { UNCATEGORIZED_BUDGET_ID } from "../Contexts/BudgetsContext"
 
 function AddExpenseModal({show, handleClose, defaultBudgetId}) {
     const descriptionRef = useRef()
@@ -43,6 +44,7 @@ function AddExpenseModal({show, handleClose, defaultBudgetId}) {
                     <Form.Group className="mb-3" controlId="budgetId">
                         <Form.Label>Budgets</Form.Label>
                         <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef} >
+                            <option id={UNCATEGORIZED_BUDGET_ID}>Uncategorized</option>
                             {budgets.map(budget => (
                                 <option key={budget.id} value={budget.id}>{budget.name}</option>
                             ))}
