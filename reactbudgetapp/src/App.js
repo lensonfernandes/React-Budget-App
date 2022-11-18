@@ -7,6 +7,7 @@ import { BudgetsProvider } from './Contexts/BudgetsContext';
 import {useBudgets} from './Contexts/BudgetsContext'
 import AddExpenseModal from './components/AddExpenseModal';
 import UncategorizedBudgetCard from './components/UncategorizedBudgetCard';
+import TotalBudgetCard from './components/TotalBudgetCard';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         {/* <BudgetCard name="Entertainment" amount={1600} max={1000} gray></BudgetCard> */}
      </div>
      <UncategorizedBudgetCard />
+     <TotalBudgetCard />
    </Container>
    <AddBudgetModal show={showAddBudgetModal} handleClose={() => setShowAddBudgetModal(false)} />
    <AddExpenseModal 
