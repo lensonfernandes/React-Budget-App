@@ -14,10 +14,11 @@ export default function TotalBudgetCard(props) {
 
 
     if(max === 0)
-    return null;
+        return null;
+
   return (
     <div>
-        <BudgetCard amount={amount} name="Total" gray  max={max}/>
+        <BudgetCard amount={amount} name="Total" gray  max={max} hideButtons/>
     </div>
   )
 }
