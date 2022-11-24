@@ -67,7 +67,7 @@ function App() {
           })}
           {/* <BudgetCard name="Entertainment" amount={1600} max={1000} gray></BudgetCard> */}
         </div>
-        <UncategorizedBudgetCard openAddExpenseClick={openAddExpenseModal}
+        <UncategorizedBudgetCard onAddExpenseClick={openAddExpenseModal}
         onViewExpensesClick={() => setViewExpensesModalBudgetId(UNCATEGORIZED_BUDGET_ID)}
         />
         <TotalBudgetCard />
