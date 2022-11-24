@@ -9,3 +9,4 @@
 #50min
 #54min
 #58min
+#1hr
