@@ -47,6 +47,7 @@ function App() {
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
             gap: "1rem",
             alignItems: "flex-start",
+            marginBottom:"2vh",
           }}
         >
           {budgets.map((budget) => {
@@ -66,11 +67,23 @@ function App() {
             );
           })}
           {/* <BudgetCard name="Entertainment" amount={1600} max={1000} gray></BudgetCard> */}
-        </div>
-        <UncategorizedBudgetCard onAddExpenseClick={openAddExpenseModal}
-        onViewExpensesClick={() => setViewExpensesModalBudgetId(UNCATEGORIZED_BUDGET_ID)}
+          </div>
+          <div 
+             style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(50%, 1fr))",
+              gap: "1rem",
+              alignItems: "flex-start",
+              marginBottom:"2vh",
+            }}> <UncategorizedBudgetCard onAddExpenseClick={openAddExpenseModal}
+        onViewExpensesClick={() => setViewExpensesModalBudgetId(UNCATEGORIZED_BUDGET_ID)} 
         />
-        <TotalBudgetCard />
+        <TotalBudgetCard   />
+        </div>
+       
+        
+        
+
       </Container>
       <AddBudgetModal
         show={showAddBudgetModal}
