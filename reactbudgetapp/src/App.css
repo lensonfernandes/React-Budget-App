@@ -1,0 +1,14 @@
+
+html {
+    min-height: 100vh;
+    background-image: url('./budgetBackground.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.app-class{
+    min-height: 100vh;
+    background-image: url('./budgetBackground.jpg');
+    background-size: cover;
+    background-position: center;
+}

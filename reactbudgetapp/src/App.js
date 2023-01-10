@@ -9,6 +9,7 @@ import AddExpenseModal from "./components/AddExpenseModal";
 import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard";
 import TotalBudgetCard from "./components/TotalBudgetCard";
 import ViewExpensesModal from "./components/ViewExpensesModal";
+import './App.css';
 
 function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
@@ -24,7 +25,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="app-class">
       <Container className="my-4">
         <Stack direction="horizontal" gap="2" className="mb-4">
           <h1 className="me-auto">Budgets</h1>
@@ -100,7 +101,7 @@ function App() {
         
         handleClose={() => setViewExpensesModalBudgetId()}
       />
-    </>
+    </div>
   );
 }
 
