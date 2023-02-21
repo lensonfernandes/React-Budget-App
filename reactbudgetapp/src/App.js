@@ -28,19 +28,39 @@ function App() {
   }
 
   const [graphData, setGraphData] = useState([])
+  const [graphData2, setGraphData2] = useState([])
 
   useEffect(()=>{
     console.log(expenses)
     let temp=[]
+    let temp2=[];
     for(let c of expenses)
     {
       temp.push([c.description, c.amount])
+    
     }
     setGraphData(temp)
 
   }, [])
 
+  
+  useEffect(()=>{
+    //console.log(expenses)
+    let temp=[]
+    let sum = 0;
+   
+    for(let i=0; i<expenses.length; i++)
+    {
+      sum  = sum + Number(expenses[i].amount)
+      temp.push([expenses[i].description, sum])
+    
+    }
+    setGraphData2(temp)
+
+  }, [])
+
   useEffect(()=>{console.log(graphData)}, [graphData])
+  useEffect(()=>{console.log(graphData2)}, [graphData2])
 
   return (
     <div className="app-class">
@@ -70,7 +90,7 @@ function App() {
           }}
         >
           {" "}
-          <TotalBudgetCard graphData={graphData}/>
+          <TotalBudgetCard graphData={graphData} graphData2={graphData2}/>
           <UncategorizedBudgetCard
             onAddExpenseClick={openAddExpenseModal}
             onViewExpensesClick={() =>

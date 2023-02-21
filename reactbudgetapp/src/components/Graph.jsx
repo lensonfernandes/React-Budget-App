@@ -22,7 +22,7 @@ ChartJs.register(
   Legend
 );
 
-const Graph = ({ graphData }) => {
+const Graph = ({ graphData, graphData2 }) => {
   return (
     <div>
       <Line
@@ -33,6 +33,12 @@ const Graph = ({ graphData }) => {
                 data: graphData.map(ele => ele[1]),
                 label: "Expenses", 
                 borderColor: "red" },
+
+            {
+                label: "Total Expenses",
+                data:graphData2.map(ele => ele[1]),
+                borderColor:"orange"
+            }
           ],
         }}
       ></Line>

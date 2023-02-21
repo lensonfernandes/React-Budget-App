@@ -3,7 +3,7 @@ import {  useBudgets } from '../Contexts/BudgetsContext'
 import BudgetCard from './BudgetCard'
 import Graph from './Graph'
 
-export default function TotalBudgetCard({graphData}) {
+export default function TotalBudgetCard({graphData, graphData2}) {
     const {expenses, budgets} = useBudgets()
     const amount = expenses.reduce(
         (total, expense) => total + expense.amount, 0
@@ -20,7 +20,7 @@ export default function TotalBudgetCard({graphData}) {
   return (
     <div>
         <BudgetCard amount={amount} name="Total" gray  max={max} hideButtons/>
-        <Graph graphData={graphData} />
+        <Graph graphData={graphData}  graphData2={graphData2}/>
     </div>
   )
 }
