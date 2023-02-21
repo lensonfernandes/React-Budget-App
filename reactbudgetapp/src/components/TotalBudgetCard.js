@@ -1,6 +1,7 @@
 import React from 'react'
 import {  useBudgets } from '../Contexts/BudgetsContext'
 import BudgetCard from './BudgetCard'
+import Graph from './Graph'
 
 export default function TotalBudgetCard(props) {
     const {expenses, budgets} = useBudgets()
@@ -19,6 +20,7 @@ export default function TotalBudgetCard(props) {
   return (
     <div>
         <BudgetCard amount={amount} name="Total" gray  max={max} hideButtons/>
+        <Graph />
     </div>
   )
 }
