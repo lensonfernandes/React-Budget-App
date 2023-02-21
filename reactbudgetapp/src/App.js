@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import { Button, Stack } from "react-bootstrap";
 import BudgetCard from "./components/BudgetCard";
 import AddBudgetModal from "./components/AddBudgetModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BudgetsProvider,
   UNCATEGORIZED_BUDGET_ID,
@@ -20,12 +20,27 @@ function App() {
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
 
   const [addExpenseeModalBudgetId, setAddExpenseModalBudgetId] = useState();
-  const { budgets, getBudgetExpenses } = useBudgets();
+  const { budgets, expenses, getBudgetExpenses } = useBudgets();
 
   function openAddExpenseModal(budgetId) {
     setShowAddExpenseModal(true);
     setAddExpenseModalBudgetId(budgetId);
   }
+
+  const [graphData, setGraphData] = useState([])
+
+  useEffect(()=>{
+    console.log(expenses)
+    let temp=[]
+    for(let c of expenses)
+    {
+      temp.push([c.description, c.amount])
+    }
+    setGraphData(temp)
+
+  }, [])
+
+  useEffect(()=>{console.log(graphData)}, [graphData])
 
   return (
     <div className="app-class">
@@ -55,7 +70,7 @@ function App() {
           }}
         >
           {" "}
-          <TotalBudgetCard />
+          <TotalBudgetCard graphData={graphData}/>
           <UncategorizedBudgetCard
             onAddExpenseClick={openAddExpenseModal}
             onViewExpensesClick={() =>
