@@ -9,10 +9,15 @@ import {
   Button
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
+import { client } from "../../client";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../paths";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
  const {name, value}= e.target;
@@ -21,6 +26,19 @@ const Login = () => {
 
    
   };
+
+
+  let handleLogin = () =>{
+
+    let body = {
+      email, password
+    }
+
+    client.post("/login", body)
+    .then(res => {window.localStorage.setItem("token", res.data.token)
+  navigate(PATHS.MANAGE_EXPENSE)})
+    .catch()
+  }
 
   let divStyle = {
 
@@ -61,7 +79,7 @@ const Login = () => {
               size="md"
             />
           </>
-          <Button colorScheme='blue' m={3}>Login</Button>
+          <Button colorScheme='blue' m={3} onClick={handleLogin}>Login</Button>
         </CardBody>
       </Card>
     </div>
