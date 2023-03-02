@@ -6,7 +6,7 @@ import {
   CardFooter,
   Text,
   CardHeader,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { client } from "../../client";
@@ -20,36 +20,35 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
- const {name, value}= e.target;
+    const { name, value } = e.target;
 
- (name=="email")? setEmail(value):setPassword(value)
-
-   
+    name == "email" ? setEmail(value) : setPassword(value);
   };
 
-
-  let handleLogin = () =>{
-
+  let handleLogin = () => {
     let body = {
-      email, password
-    }
+      email,
+      password,
+    };
 
-    client.post("/login", body)
-    .then(res => {window.localStorage.setItem("token", res.data.token)
-  navigate(PATHS.MANAGE_EXPENSE)})
-    .catch()
-  }
+    client
+      .post("/login", body)
+      .then((res) => {
+        window.localStorage.setItem("token", res.data.token);
+        navigate(PATHS.MANAGE_EXPENSE);
+      })
+      .catch((e) => console.log(e));
+  };
 
   let divStyle = {
-
-    backgroundColor:"grey",
-    padding:"20px",
+    backgroundColor: "grey",
+    padding: "20px",
     height: "100vh",
     display: "flex",
     alignItems: "center",
-    width:"100%",
-    justifyContent:"center"
-  }
+    width: "100%",
+    justifyContent: "center",
+  };
 
   return (
     <div style={divStyle}>
@@ -79,7 +78,9 @@ const Login = () => {
               size="md"
             />
           </>
-          <Button colorScheme='blue' m={3} onClick={handleLogin}>Login</Button>
+          <Button colorScheme="blue" m={3} onClick={handleLogin}>
+            Login
+          </Button>
         </CardBody>
       </Card>
     </div>

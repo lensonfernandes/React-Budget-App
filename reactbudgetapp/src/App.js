@@ -44,7 +44,7 @@ function App() {
       <Route path="/" element={<RestrictedRoutes />}>
         <Route path={PATHS.LOGIN} element={<Login />} />
       </Route>
-      <Route path={PATHS.LOGIN} element={<Login />} />
+   
     </Routes>
 
     //old code
