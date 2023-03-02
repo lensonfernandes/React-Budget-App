@@ -11,7 +11,7 @@ export const INITIAL_STORE = [{
     title: "Buy phone1",
     description:"Phone upgrade",
     amount: 500,
-    type:"EXPENSE",
+    type:"INCOME",
    date:"2023-01-10"
 },
 {

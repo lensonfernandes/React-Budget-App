@@ -30,9 +30,9 @@ const AddExpense = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if(name!="date")
+   // if(name!="date")
      setFormData({ ...formData, [name]: value });
-    console.log(name)
+   // console.log(name)
   };
 
   let handleSubmit = () => {

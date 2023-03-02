@@ -10,24 +10,41 @@ import {
   Flex,
   Select,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../../paths";
 
-const Filters = () => {
+const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [type, setType] = useState("");
 
+  const store = useSelector((state) => state);
+
   let handleChange = (e) => {
     console.log(e.target.name, e.target.value);
 
-    const {name, value} = e.target;
+    const { name, value } = e.target;
 
-    if(name=="month")
-      setMonth(value);
-    else if(name=='year')
-      setYear(value)
-    else
-      setType(value)
+    if (name == "month") setMonth(value);
+    else if (name == "year") setYear(value);
+    else setType(value);
+  };
 
+  let handleFilters = () => {
+    const newData = store.filter((ele) => {
+      if (ele.type == type.toUpperCase()) return ele;
+    });
+
+    setFilteredExpenses(newData);
+  };
+
+  const navigate = useNavigate();
+
+  let handleLogout = () => {
+    window.localStorage.clear();
+    navigate(PATHS.LOGIN)
+    
   };
 
   return (
@@ -57,17 +74,25 @@ const Filters = () => {
               />
               <>
                 {" "}
-                <Select name="type" placeholder="Select option" onChange={handleChange} value={type}>
+                <Select
+                  name="type"
+                  placeholder="Select option"
+                  onChange={handleChange}
+                  value={type}
+                >
                   <option value="EXPENSE">Expense</option>
                   <option value="INCOME">Income</option>
                 </Select>
               </>
             </>
-            <Button colorScheme="blue" m={3} onClick={""}>
+            <Button colorScheme="blue" m={3} onClick={handleFilters}>
               Search
             </Button>
           </Flex>
         </CardBody>
+        <Button colorScheme="blue" m={3} onClick={handleLogout}>
+          Logout
+        </Button>
       </Card>
     </div>
   );

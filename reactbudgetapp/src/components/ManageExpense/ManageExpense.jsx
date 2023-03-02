@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -28,6 +28,11 @@ import uniqid from "uniqid"
 import { DELETE_EXPENSE } from "../../action";
 
 const ManageExpense = () => {
+  const store = useSelector(state => state)
+  console.log(store)
+
+  const [expenses, setExpenses] = useState(store);
+  const [filteredExpenses, setFilteredExpenses] = useState(store)
 
 
 
@@ -45,12 +50,11 @@ const ManageExpense = () => {
     dispatch({type:DELETE_EXPENSE, id:id})
   }
 
-  const store = useSelector(state => state)
-  console.log(store)
+
 
   return (
     <div>
-      <Filters />
+      <Filters filteredExpenses={filteredExpenses} setFilteredExpenses={setFilteredExpenses}/>
       <TableContainer>
         <Table variant="simple">
           <TableCaption>Expense Calculator</TableCaption>
@@ -66,7 +70,7 @@ const ManageExpense = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {store.map((ele, i) => {
+            {expenses.map((ele, i) => {
               return (
                 <Tr key={uniqid()}>
                   <Td>{i+1}</Td>
