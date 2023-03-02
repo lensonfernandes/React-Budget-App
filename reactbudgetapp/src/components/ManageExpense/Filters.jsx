@@ -33,8 +33,9 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
 
   let handleFilters = () => {
     const newData = store.filter((ele) => {
-      if (ele.type == type.toUpperCase()) return ele;
+      if (ele.type == type) return ele;
     });
+    console.log(newData)
 
     setFilteredExpenses(newData);
   };

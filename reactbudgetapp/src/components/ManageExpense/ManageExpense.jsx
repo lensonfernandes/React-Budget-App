@@ -70,7 +70,7 @@ const ManageExpense = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {expenses.map((ele, i) => {
+            {filteredExpenses.map((ele, i) => {
               return (
                 <Tr key={uniqid()}>
                   <Td>{i+1}</Td>
