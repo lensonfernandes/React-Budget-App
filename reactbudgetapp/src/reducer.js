@@ -10,12 +10,15 @@ export const reducer = (state, action)=>{
 
         case ADD_EXPENSE:
             const newData = {...action.data}
-          
-            return state;
+            newData.id= state.length+1
+            return [...state, newData];
 
         case DELETE_EXPENSE: 
-
-            return state;
+            const newStore = state.filter((ele)=>{
+                if(ele.id != action.id)
+                    return ele
+            })
+            return newStore;
 
         default:
             return state;

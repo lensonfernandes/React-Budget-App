@@ -23,7 +23,9 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { INITIAL_STORE } from "../../store";
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import uniqid from "uniqid"
+import { DELETE_EXPENSE } from "../../action";
 
 const ManageExpense = () => {
 
@@ -34,9 +36,17 @@ const ManageExpense = () => {
   };
 
 
-  let handleDelete = ()=>{
 
+
+  const dispatch = useDispatch();
+
+  let handleDelete = (id)=>{
+    console.log("Delete")
+    dispatch({type:DELETE_EXPENSE, id:id})
   }
+
+  const store = useSelector(state => state)
+  console.log(store)
 
   return (
     <div>
@@ -49,21 +59,23 @@ const ManageExpense = () => {
               <Th>S.No.</Th>
               <Th>Title</Th>
               <Th>Amount</Th>
+              <Th>Description</Th>
               <Th>Expense Type</Th>
               <Th>Date</Th>
+              <Th>Actions</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {INITIAL_STORE.map((ele, i) => {
+            {store.map((ele, i) => {
               return (
-                <Tr>
+                <Tr key={uniqid()}>
                   <Td>{i+1}</Td>
                   <Td>{ele.title}</Td>
                   <Td> {ele.amount}</Td>
                   <Td> {ele.description}</Td>
                   <Td> {ele.type}</Td>
                   <Td> {ele.date}</Td>
-                  <Td> <Button colorScheme='blue' m={3} onClick={handleDelete}>Delete</Button></Td>
+                  <Td> <Button colorScheme='blue' m={3} onClick={()=>{handleDelete(ele.id)}}>Delete</Button></Td>
                 </Tr>
               );
             })}

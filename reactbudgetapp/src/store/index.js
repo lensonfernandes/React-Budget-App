@@ -12,7 +12,7 @@ export const INITIAL_STORE = [{
     description:"Phone upgrade",
     amount: 500,
     type:"EXPENSE",
-   date:"15-02-2023"
+   date:"2023-01-10"
 },
 {
     id:"QWERTY2",
@@ -20,7 +20,7 @@ export const INITIAL_STORE = [{
     description:"Phone upgrade2",
     type:"EXPENSE",
     amount: 1500,
-    date:"15-02-2023"
+    date:"2023-01-10"
 }
 ,
 {
@@ -29,7 +29,7 @@ export const INITIAL_STORE = [{
     description:"Phone upgrade3",
     type:"EXPENSE",
     amount: 5000,
-    date:"15-02-2023"
+    date:"2023-01-10"
 }
 ,
 {
@@ -38,7 +38,7 @@ export const INITIAL_STORE = [{
     description:"Phone upgrade4",
     type:"EXPENSE",
     amount:4500,
-    date:"15-02-2023"
+    date:"2023-01-10"
 }
 
 

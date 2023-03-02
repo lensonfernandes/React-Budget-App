@@ -10,8 +10,11 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { DELETE_EXPENSE, ADD_EXPENSE } from "../../action";
+import {  useNavigate } from 'react-router-dom'
+
+import { PATHS } from "../../paths";
 
 const AddExpense = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +26,7 @@ const AddExpense = () => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +36,9 @@ const AddExpense = () => {
   };
 
   let handleSubmit = () => {
-    dispatch({});
+    dispatch({type: ADD_EXPENSE, data:formData});
+    navigate(PATHS.MANAGE_EXPENSE)
+
   };
 
   return (
