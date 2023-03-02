@@ -12,6 +12,7 @@ import { Input } from "@chakra-ui/react";
 import { client } from "../../client";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../paths";
+import budgetLogin from '../Login/budgetLogin.svg'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -41,7 +42,7 @@ const Login = () => {
   };
 
   let divStyle = {
-    backgroundColor: "grey",
+    backgroundColor: "#003D48",
     padding: "20px",
     height: "100vh",
     display: "flex",
@@ -52,7 +53,8 @@ const Login = () => {
 
   return (
     <div style={divStyle}>
-      <Card>
+      <img src={budgetLogin} style={{width:"50%"}}></img>
+      <Card style={{width:"50%", backgroundColor: "#003D48", color:"white", fontWeight:"600"}}>
         <CardHeader>
           <Heading size="md">Login</Heading>
         </CardHeader>
