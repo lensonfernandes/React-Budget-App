@@ -20,6 +20,7 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 import RestrictedRoutes from "./routes/RestrictedRoutes";
 import ManageExpense from "./components/ManageExpense/ManageExpense";
 import AddExpense from "./components/AddExpense/AddExpense";
+import { Text } from "@chakra-ui/react";
 
 function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
@@ -35,17 +36,19 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<PrivateRoutes />}>
-        <Route path={PATHS.ADD_EXPENSE} element={<AddExpense />} />
-        <Route path={PATHS.MANAGE_EXPENSE} element={<ManageExpense />} />
-      </Route>
+    <>
+    <Text>Woah!! You are an early bird!  You have landed on the upcoming Revamped version of Expense Tracker which I am actively working on. To access the last stable version of this app, please navigate to https://github.com/lensonfernandes/React-Budget-App (Main Branch) </Text>
+      <Routes>
+        <Route path="/" element={<PrivateRoutes />}>
+          <Route path={PATHS.ADD_EXPENSE} element={<AddExpense />} />
+          <Route path={PATHS.MANAGE_EXPENSE} element={<ManageExpense />} />
+        </Route>
 
-      <Route path="/" element={<RestrictedRoutes />}>
-        <Route path={PATHS.LOGIN} element={<Login />} />
-      </Route>
-   
-    </Routes>
+        <Route path="/" element={<RestrictedRoutes />}>
+          <Route path={PATHS.LOGIN} element={<Login />} />
+        </Route>
+      </Routes>
+    </>
 
     //old code
     // <div className="app-class">

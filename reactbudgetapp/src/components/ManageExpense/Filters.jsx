@@ -9,6 +9,7 @@ import {
   Button,
   Flex,
   Select,
+  Heading,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +36,7 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
     const newData = store.filter((ele) => {
       if (ele.type == type) return ele;
     });
-    console.log(newData)
+    console.log(newData);
 
     setFilteredExpenses(newData);
   };
@@ -44,25 +45,27 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
 
   let handleLogout = () => {
     window.localStorage.clear();
-    navigate(PATHS.LOGIN)
-    
+    navigate(PATHS.LOGIN);
   };
 
   return (
     <div>
       <Card>
-        <CardBody>
-          <Text>Filter your expenses</Text>
+        <CardBody style={{ backgroundColor: "#485164", color: "#FDFAF9" }}>
+          <Heading>Filter your expenses</Heading>
           <br></br>
-          <Flex>
-            <Text mb="8px">Month:</Text>
-            <Input
-              value={month}
-              name="month"
-              onChange={handleChange}
-              placeholder="Enter Month"
-              size="md"
-            />
+          <Flex style={{display:"flex", justifyContent:"space-around", gap:"2vw", color: "#FDFAF9"}}>
+            <>
+              <Text mb="8px">Month:</Text>
+              <Input
+                value={month}
+                name="month"
+                onChange={handleChange}
+                placeholder="Enter Month"
+                size="md"
+                
+              />
+            </>
 
             <>
               <Text mb="8px">Year</Text>
@@ -73,6 +76,7 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
                 name="year"
                 size="md"
               />
+               </>
               <>
                 {" "}
                 <Select
@@ -84,14 +88,14 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
                   <option value="EXPENSE">Expense</option>
                   <option value="INCOME">Income</option>
                 </Select>
-              </>
+             
             </>
-            <Button colorScheme="blue" m={3} onClick={handleFilters}>
+            <Button colorScheme="blue" m={3} onClick={handleFilters} p={7}>
               Search
             </Button>
           </Flex>
         </CardBody>
-        <Button colorScheme="blue" m={3} onClick={handleLogout}>
+        <Button colorScheme="blue" m={3} onClick={handleLogout} w={20}>
           Logout
         </Button>
       </Card>
