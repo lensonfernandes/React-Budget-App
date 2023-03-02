@@ -13,6 +13,7 @@ import { client } from "../../client";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../paths";
 import budgetLogin from '../Login/budgetLogin.svg'
+import { FormLabel } from "react-bootstrap";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,16 +70,19 @@ const Login = () => {
               placeholder="Enter Email"
               size="md"
             />
+            <FormLabel style={{fontWeight:"300"}}>Test Username - eve.holt@reqres.in</FormLabel>
           </>
           <>
             <Text mb="8px">Password:</Text>
             <Input
+            type="password"
               value={password}
               onChange={handleChange}
               placeholder="Enter Password"
               name="password"
               size="md"
             />
+             <FormLabel style={{fontWeight:"300"}}>Test Password - cityslicka</FormLabel>
           </>
           <Button colorScheme="blue" m={3} onClick={handleLogin}>
             Login
