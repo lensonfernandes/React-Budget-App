@@ -1,7 +1,7 @@
 
 
 
-import { ADD_EXPENSE, DELETE_EXPENSE } from "./action";
+import { ADD_EXPENSE, DELETE_EXPENSE, UPDATE_EXPENSE } from "./action";
 
 
 export const reducer = (state, action)=>{
@@ -19,6 +19,10 @@ export const reducer = (state, action)=>{
                     return ele
             })
             return newStore;
+
+        case UPDATE_EXPENSE: 
+           
+            return state;
 
         default:
             return state;

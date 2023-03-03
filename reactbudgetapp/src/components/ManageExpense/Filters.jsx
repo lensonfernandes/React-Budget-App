@@ -20,6 +20,8 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
   const [year, setYear] = useState("");
   const [type, setType] = useState("");
 
+  const [isFilterOn, setIsFilterOn] = useState(false);
+
   const store = useSelector((state) => state);
 
   let handleChange = (e) => {
@@ -35,6 +37,7 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
   let handleFilters = () => {
     const newData = store.filter((ele) => {
       if (ele.type == type) return ele;
+      
     });
     console.log(newData);
 
@@ -48,13 +51,17 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
     navigate(PATHS.LOGIN);
   };
 
+  let handleAddButton = () => {
+    navigate(PATHS.ADD_EXPENSE)
+  }
+
   return (
     <div>
       <Card>
         <CardBody style={{ backgroundColor: "#485164", color: "#FDFAF9" }}>
           <Heading>Filter your expenses</Heading>
           <br></br>
-          <Flex style={{display:"flex", justifyContent:"space-around", gap:"2vw", color: "#FDFAF9"}}>
+          {/* <Flex style={{display:"flex", justifyContent:"space-around", gap:"2vw", color: "#FDFAF9"}}>
             <>
               <Text mb="8px">Month:</Text>
               <Input
@@ -93,11 +100,17 @@ const Filters = ({ filteredExpenses, setFilteredExpenses }) => {
             <Button colorScheme="blue" m={3} onClick={handleFilters} p={7}>
               Search
             </Button>
-          </Flex>
+          </Flex> */}
         </CardBody>
-        <Button colorScheme="blue" m={3} onClick={handleLogout} w={20}>
-          Logout
-        </Button>
+        <Flex>
+          {" "}
+          <Button colorScheme="blue" m={3} onClick={handleAddButton} w={40}>
+            Add Expense/Income
+          </Button>
+          <Button colorScheme="blue" m={3} onClick={handleLogout} w={20}>
+            Logout
+          </Button>
+        </Flex>
       </Card>
     </div>
   );
